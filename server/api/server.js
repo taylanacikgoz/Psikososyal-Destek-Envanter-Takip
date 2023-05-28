@@ -1,4 +1,6 @@
-const personelRoute = require("./getData/data-route");
+const personelRoute = require("./Routes/PersonelRoutes/personel-router");
+const envanterRoute = require("./Routes/EnvanterRoutes/envanter-router");
+const merkezRoute = require("./Routes/MerkezRoutes/merkez-router");
 
 const express = require("express");
 const helmet = require("helmet");
@@ -18,5 +20,7 @@ server.use((err, req, res, next) => {
 });
 
 server.use("/api/", personelRoute);
+server.use("/api/", envanterRoute);
+server.use("/api/", merkezRoute);
 
 module.exports = server;
