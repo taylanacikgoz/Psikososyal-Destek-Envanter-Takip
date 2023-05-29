@@ -1,26 +1,77 @@
-import React from "react";
+import "./reset.css";
+import "./Css/App.css";
+import dummydata from "./data";
+import { useState, useEffect } from "react";
+import { Switch, Route } from "react-router-dom";
+import Header from "./components/Header";
+import Login from "./components/Login";
+import Destekçiler from "./components/Destekçiler";
+import Navigation from "./components/Navigation";
+// import Aksiyonlar from "./components/Aksiyonlar";
+import Haberler from "./components/Haberler";
+import Bilgiler from "./components/Bilgiler";
+import Hakkımızda from "./components/Hakkımızda";
+import Gönüllü from "./components/Gönüllü";
+import Etkinlikler from "./components/Etkinlikler";
+import { getKuruluslarAPI, getEtkinliklerAPI } from "./Reducer/action";
+import { useDispatch } from "react-redux";
 import Map from "./components/Map";
+import Bilgi from "./components/Bilgi";
+import axios from "axios";
+import Table from "./components/Table";
 
-const App = () => {
+function App() {
+  const [data] = useState(dummydata);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getKuruluslarAPI());
+  }, []);
+  useEffect(() => {
+    dispatch(getEtkinliklerAPI());
+  });
   return (
-    <div>
-      <div className="left-box">
-        <div className="left-date">29 Mart'tan beri</div>
-        <div className="left-head">Erişilen Kişi</div>
-        <div className="left-data">1920</div>
-        <div className="left-head">etkinlik</div>
-        <div className="left-data">83</div>
-      </div>
-      <div className="logo-part">sadafasdsadsa</div>
-      <div className="nav-bar">
-        <div className="nav-bar-text">Hakkımızda</div>
-        <div className="nav-bar-text">Gönüllü Ol</div>
-        <div className="nav-bar-text">Etkinlik Takvimi</div>
-        <div className="nav-bar-text">İletişim</div>
-        <div className="nav-bar-text">Giriş Yap</div>
-      </div>
-      <Map />
+    <div className="App">
+      <Header data={data} />
+      <Switch>
+        <Route exact path="/">
+          <Navigation />
+          <Map />
+          <Bilgiler />
+          <Haberler />
+          <Table />
+          {/* <Bilgiler />
+          <Destekçiler /> */}
+        </Route>
+        <Route path="/girisyap">
+          <Login />
+        </Route>
+        <Route path="/hakkimizda">
+          <Hakkımızda data={data.Aksiyonlar} />
+        </Route>
+        <Route path="/gonulluol">
+          <Gönüllü />
+        </Route>
+        <Route path="/etkinlik">
+          <Etkinlikler data={data.Aksiyonlar} />
+        </Route>
+        <Route path="/iletisim">buraya iletişim gelecek</Route>
+      </Switch>
     </div>
   );
-};
+}
+
 export default App;
+
+// import "./App.css";
+// import Table from "./Components/Table";
+// import { useState, useEffect } from "react";
+// import axios from "axios";
+
+// const App = () => {
+//   return (
+//     <div className="App">
+//       <Table />
+//     </div>
+//   );
+// };
+// export default App;

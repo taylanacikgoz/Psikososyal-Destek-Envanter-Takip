@@ -1,0 +1,13 @@
+.Aksiyonlar {
+  display: flex;
+  justify-content: end;
+  gap: 4rem;
+  padding: 0.5rem;
+  background-color: #999043;
+}
+
+.Aksiyonlar_yazi {
+  font-weight: bold;
+  text-decoration: none;
+  color: #fff;
+}
