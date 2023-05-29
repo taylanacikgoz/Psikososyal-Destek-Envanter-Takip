@@ -31,6 +31,7 @@ function App() {
   });
   return (
     <div className="App">
+      <div>NOKTA</div>
       <Header data={data} />
       <Switch>
         <Route exact path="/">
