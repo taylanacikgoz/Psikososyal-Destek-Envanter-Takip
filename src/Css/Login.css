@@ -1,0 +1,46 @@
+.Login {
+  width: 20rem;
+
+  background-color: rgb(215, 113, 149);
+  margin: 5rem auto 0rem auto;
+  border: 0.5rem solid gray;
+  border-radius: 1.5rem;
+}
+.Username {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.Password {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.Password_input {
+  justify-content: center;
+}
+
+label {
+  margin: 0.5rem auto;
+}
+input {
+  width: 10rem;
+  height: 1.5rem;
+  margin: 1rem auto;
+}
+.Login_başlık h2 {
+  margin: 2rem auto;
+  display: flex;
+  justify-content: center;
+}
+
+.Login_giriş {
+  margin: 2rem auto 5rem auto;
+  display: flex;
+  justify-content: center;
+}
+
+.Login_giriş button {
+  padding: 1rem 1.2rem;
+  border-radius: 1rem;
+}
