@@ -1,0 +1,70 @@
+.box {
+  position: absolute;
+  left: 55.74%;
+  right: 0.58%;
+  top: 25%;
+  bottom: 54.17%;
+
+  width: 375px;
+  height: 230px;
+  background: #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 30px;
+  z-index: 2;
+}
+
+.city {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: bolder;
+  font-size: 15px;
+  margin-left: 20px;
+  margin-top: 12px;
+  line-height: 30px;
+  /* or 150% */
+
+  color: #2d566d;
+}
+
+.merkez {
+  color: #2d566d;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: bold;
+  font-size: 10px;
+  margin-left: 20px;
+  margin-top: 5px;
+}
+
+.infolar {
+  box-sizing: border-box;
+  border: solid;
+  color: #6f7372;
+  margin: 10px;
+}
+
+.rows {
+  display: flex;
+  flex-direction: row;
+}
+.title-column {
+  font-family: "Roboto";
+  font-style: normal;
+  font-size: 10px;
+  display: flex;
+  flex-direction: column;
+  margin: 4px;
+  padding: 0;
+  line-height: 10px;
+  color: #6f7372;
+  min-width: 55px;
+  margin-left: 10px;
+}
+
+.text-data {
+  font-family: "Roboto";
+  font-style: normal;
+  font-size: 8px;
+  margin-top: 5px;
+  color: #6f7372;
+}

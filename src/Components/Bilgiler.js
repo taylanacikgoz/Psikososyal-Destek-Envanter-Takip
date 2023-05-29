@@ -19,7 +19,7 @@ function Bilgiler() {
       <div className="info-box">
         <p className="title">destek sayısı</p>
         {/* <img src={require("../photo/image7.png")} /> */}
-        <p className="number">{data1}</p>
+        {/* <p className="number">{data1}</p> */}
         <p className="number">2041</p>
       </div>
       <div className="info-box">

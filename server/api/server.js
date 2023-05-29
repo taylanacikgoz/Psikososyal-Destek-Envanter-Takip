@@ -10,7 +10,8 @@ const server = express();
 
 server.use(helmet());
 server.use(express.json());
-server.use(cors());
+server.use(cors({ origin: "http://localhost:9000/" }));
+server.use(cors({ origin: "http://localhost:9000/api/merkez" }));
 
 server.use((err, req, res, next) => {
   res.status(err.status || 500).json({

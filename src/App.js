@@ -19,16 +19,18 @@ import Map from "./components/Map";
 import Bilgi from "./components/Bilgi";
 import axios from "axios";
 import Table from "./components/Table";
+import İletisim from "./components/İletisim";
+import MiniTable from "./components/MiniTable";
 
 function App() {
   const [data] = useState(dummydata);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getKuruluslarAPI());
-  }, []);
-  useEffect(() => {
-    dispatch(getEtkinliklerAPI());
-  });
+  // const dispatch = useDispatch();
+  // useEffect(() => {
+  //   dispatch(getKuruluslarAPI());
+  // }, []);
+  // useEffect(() => {
+  //   dispatch(getEtkinliklerAPI());
+  // });
   return (
     <div className="App">
       <Header data={data} />
@@ -36,9 +38,11 @@ function App() {
         <Route exact path="/">
           <Navigation />
           <Map />
+          <MiniTable />
           <Bilgiler />
           <Haberler />
           <Table />
+
           {/* <Bilgiler />
           <Destekçiler /> */}
         </Route>
@@ -54,7 +58,9 @@ function App() {
         <Route path="/etkinlik">
           <Etkinlikler data={data.Aksiyonlar} />
         </Route>
-        <Route path="/iletisim">buraya iletişim gelecek</Route>
+        <Route path="/iletisim">
+          <İletisim />
+        </Route>
       </Switch>
     </div>
   );
