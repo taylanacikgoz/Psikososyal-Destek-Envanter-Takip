@@ -22,6 +22,11 @@
   fill: #63ada9;
   cursor: pointer;
 }
+
+.city::selection {
+  fill: #63ada9;
+}
+
 .city-text:hover {
   fill: #63ada9;
   cursor: pointer;
