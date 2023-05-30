@@ -1,0 +1,9 @@
+.Haberler {
+  height: 20rem;
+  text-align: center;
+}
+.App {
+  max-width: 1440px;
+  margin: 0rem 0rem;
+  box-sizing: border-box;
+}
