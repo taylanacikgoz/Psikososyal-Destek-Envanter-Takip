@@ -1,3 +1,4 @@
+const sehirRoute = require("./Routes/SehirRoutes/sehir-router");
 const personelRoute = require("./Routes/PersonelRoutes/personel-router");
 const envanterRoute = require("./Routes/EnvanterRoutes/envanter-router");
 const merkezRoute = require("./Routes/MerkezRoutes/merkez-router");
@@ -27,6 +28,7 @@ server.use((err, req, res, next) => {
   });
 });
 
+server.use("/api/", sehirRoute);
 server.use("/api/", personelRoute);
 server.use("/api/", envanterRoute);
 server.use("/api/", merkezRoute);
