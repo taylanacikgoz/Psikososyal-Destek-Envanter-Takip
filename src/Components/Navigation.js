@@ -25,6 +25,9 @@ function Navigation() {
       <Link to="/girisyap" style={{ textDecoration: "none", color: "#fff" }}>
         <p className="nav-bar-text">Giriş Yap</p>
       </Link>
+      <Link to="/tablo" style={{ textDecoration: "none", color: "#fff" }}>
+        <p className="nav-bar-text">Tablo_temp</p>
+      </Link>
       {/* <Router>
         
         {/* <Link to="/gonullu" style={{ textDecoration: "none" }}>

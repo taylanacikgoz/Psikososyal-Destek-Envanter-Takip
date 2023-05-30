@@ -33,7 +33,7 @@ function App() {
   // });
   return (
     <div className="App">
-      <div>NOKTA!!</div>
+      <div>NOKTA</div>
       <Header data={data} />
       <Switch>
         <Route exact path="/">
@@ -42,7 +42,6 @@ function App() {
           <MiniTable />
           <Bilgiler />
           <Haberler />
-          <Table />
 
           {/* <Bilgiler />
           <Destekçiler /> */}
@@ -61,6 +60,9 @@ function App() {
         </Route>
         <Route path="/iletisim">
           <İletisim />
+        </Route>
+        <Route path="/tablo">
+          <Table />
         </Route>
       </Switch>
     </div>
