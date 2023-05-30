@@ -1,0 +1,19 @@
+.table-nav-bar {
+  background-color: #2d566d;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  height: 40px;
+}
+
+.button {
+  color: white;
+  text-decoration: none;
+  background-color: #2d566d;
+  border-style: none;
+  cursor: pointer;
+}
+
+.button:active {
+  color: red;
+}

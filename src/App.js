@@ -21,6 +21,7 @@ import axios from "axios";
 import Table from "./components/Table";
 import İletisim from "./components/İletisim";
 import MiniTable from "./components/MiniTable";
+import TableNav from "./components/TableNav";
 
 function App() {
   const [data] = useState(dummydata);
@@ -60,6 +61,7 @@ function App() {
           <İletisim />
         </Route>
         <Route path="/tablo">
+          <TableNav />
           <Table />
         </Route>
       </Switch>
