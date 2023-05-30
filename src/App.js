@@ -39,10 +39,9 @@ function App() {
         <Route exact path="/">
           <Navigation />
           <Map />
-          <MiniTable />
+          {/* <MiniTable data={data.Malatya} /> */}
           <Bilgiler />
           <Haberler />
-
           {/* <Bilgiler />
           <Destekçiler /> */}
         </Route>
@@ -50,13 +49,13 @@ function App() {
           <Login />
         </Route>
         <Route path="/hakkimizda">
-          <Hakkımızda data={data.Aksiyonlar} />
+          <Hakkımızda data={data.Aksiyon} />
         </Route>
         <Route path="/gonulluol">
           <Gönüllü />
         </Route>
         <Route path="/etkinlik">
-          <Etkinlikler data={data.Aksiyonlar} />
+          <Etkinlikler data={data.Aksiyon} />
         </Route>
         <Route path="/iletisim">
           <İletisim />

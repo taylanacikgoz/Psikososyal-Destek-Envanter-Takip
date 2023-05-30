@@ -1,8 +1,18 @@
 import React from "react";
 import "../Css/Map.css";
+import { useState } from "react";
+import MiniTable from "./MiniTable";
+
 const Map = () => {
+  const [showMiniTable, setshowMiniTable] = useState(false);
+  const [isActive, setIsActive] = useState(false);
+  function handleClick() {
+    setshowMiniTable(true);
+    setIsActive((current) => !current);
+  }
   return (
     <div>
+      <div>{showMiniTable && <MiniTable />}</div>
       <div>
         <svg
           className="map-svg"
@@ -271,6 +281,11 @@ const Map = () => {
             stroke-linejoin="round"
           />
           <path
+            onClick={handleClick}
+            style={{
+              fill: isActive ? "salmon" : "",
+              color: isActive ? "white" : "",
+            }}
             className="city"
             fill-rule="evenodd"
             clip-rule="evenodd"
@@ -677,6 +692,11 @@ const Map = () => {
             stroke-linejoin="round"
           />
           <path
+            onClick={handleClick}
+            style={{
+              fill: isActive ? "salmon" : "",
+              color: isActive ? "white" : "",
+            }}
             className="city"
             fill-rule="evenodd"
             clip-rule="evenodd"
