@@ -1,17 +1,17 @@
 .table-nav-bar {
-  background-color: #2d566d;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
+  margin: 5px;
   height: 40px;
 }
 
-.button {
-  color: white;
+button {
+  color: #2d566d;
   text-decoration: none;
-  background-color: #2d566d;
   border-style: none;
   cursor: pointer;
+  border-radius: 50px;
 }
 
 .button:active {
