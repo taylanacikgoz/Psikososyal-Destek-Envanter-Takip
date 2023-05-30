@@ -52,7 +52,7 @@ const dummydata = {
         "https://worldhumanrelief.org/wp-content/uploads/2022/12/logo.png.webp",
     },
   ],
-  Aksiyonlar: {
+  Aksiyon: {
     Hakkimizda:
       "Travma ve Afet Ruh Sağlığı Çalışmaları Derneği, bireysel ve toplumsal travmalar konusunda çeşitli alanlarda bilgilendirme etkinliklerinde bulunmak, ruhsal travma alanında yapılacak çalışmaları düzenlemek ve ilgili alanlarda psikososyal hizmetler yürütmek amacıyla kurulmuştur.",
     İletisim: "0212 522 44 40",
@@ -87,6 +87,29 @@ const dummydata = {
       photo: "../photo/image9.png",
     },
   ],
+  Malatya: {
+    Merkez_Adi: "• NURDAĞI 1 KONTEYNIR KENTİ",
+    Adres: "asdsad sok. no:1 akderl asdsafsd/malatya123",
+    Telefon: "0212 522 44 40",
+    Kurumlar: [
+      "AÇEV",
+      "Sağlık Bakanlığı",
+      "GASMED",
+      "asdsada",
+      "asdsadas",
+      "asdasfsadsa",
+    ],
+    Personeller: [
+      "Gamze Dedeler",
+      "asdsa asdasd",
+      "asdsadas adasda",
+      "ezel aksoy",
+      "asdada asdas",
+      "asdasdsa",
+      "taylan açıkgöz",
+      "asdasd asdasda",
+    ],
+  },
 };
 
 export default dummydata;
