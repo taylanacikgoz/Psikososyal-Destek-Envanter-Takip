@@ -62,7 +62,7 @@ const MyTable = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:9000/api/merkez")
+      .get("http://localhost:9000/api/sehir")
       .then((response) => setMerkezData(response.data))
       .catch((error) => console.log(error));
   }, []);
@@ -86,6 +86,7 @@ const MyTable = () => {
   return (
     <>
       <Table
+        key={merkezData.Merkez_id}
         columns={MerkezColumns}
         expandable={{
           expandedRowRender,

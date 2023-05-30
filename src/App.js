@@ -34,7 +34,6 @@ function App() {
   // });
   return (
     <div className="App">
-      <div>NOKTA</div>
       <Header data={data} />
       <Switch>
         <Route exact path="/">
@@ -63,7 +62,6 @@ function App() {
         </Route>
         <Route path="/tablo">
           <TableNav />
-          <Table />
         </Route>
       </Switch>
     </div>
