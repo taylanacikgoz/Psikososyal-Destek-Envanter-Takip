@@ -1,11 +1,22 @@
 import { DownOutlined } from "@ant-design/icons";
-import { Badge, Dropdown, Table } from "antd";
-import { MerkezData, expandedRowRender, items } from "./Expandables";
+import { Badge, Dropdown, Popconfirm, Table } from "antd";
+import { expandedRowRender, items } from "./Expandables";
 import axios from "axios";
 import { useState, useEffect } from "react";
 
 const MyTable = () => {
-  const [merkezData, setMerkezData] = useState([]);
+  const [merkezData, setMerkezData] = useState([
+    useEffect(() => {
+      dataAl();
+    }, []),
+  ]);
+
+  const dataAl = () => {
+    axios
+      .get("http://localhost:9000/api/merkez")
+      .then((response) => setMerkezData(response.data))
+      .catch((error) => console.log(error));
+  };
 
   const [MerkezColumns, setMerkezColumns] = useState([
     {
@@ -46,26 +57,26 @@ const MyTable = () => {
     {
       title: "Eylem",
       key: "operation",
-      render: () => (
-        <Dropdown
-          menu={{
-            items,
-          }}
-        >
-          <a>
-            Seç <DownOutlined />
-          </a>
-        </Dropdown>
-      ),
+      render: (_, record) =>
+        merkezData.length >= 1 ? (
+          <Popconfirm
+            title="Sure to delete?"
+            onConfirm={() => handleDelete(record.Merkez_id)}
+          >
+            <a>Sil</a>
+          </Popconfirm>
+        ) : null,
     },
   ]);
 
-  useEffect(() => {
+  const handleDelete = (Merkez_id) => {
     axios
-      .get("http://localhost:9000/api/sehir")
-      .then((response) => setMerkezData(response.data))
+      .delete(`http://localhost:9000/api/merkez/${Merkez_id}`)
+      .then(() => {
+        dataAl();
+      })
       .catch((error) => console.log(error));
-  }, []);
+  };
 
   /* const MerkezData = merkezData.map((merkez) => {
     return [
@@ -86,13 +97,13 @@ const MyTable = () => {
   return (
     <>
       <Table
-        key={merkezData.Merkez_id}
         columns={MerkezColumns}
         expandable={{
           expandedRowRender,
           defaultExpandedRowKeys: ["0"],
         }}
         dataSource={merkezData}
+        Merkez_id={merkezData.Merkez_id}
       />
     </>
   );

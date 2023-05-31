@@ -9,4 +9,10 @@ const getAll = async () => {
   return Merkez;
 };
 
-module.exports = { getAll };
+const deleteById = async (Merkez_id) => {
+  await db("Merkez as m").where("m.Merkez_id", Merkez_id).delete();
+  const hepsiniAl = await getAll();
+  return hepsiniAl;
+};
+
+module.exports = { getAll, deleteById };

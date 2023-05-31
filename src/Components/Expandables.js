@@ -14,7 +14,7 @@ export const items = [
   },
 ];
 
-const DataMaker = () => {
+const DataMaker = ({ Merkez_id }) => {
   const [personelColumns, setPersonelColumns] = useState([
     {
       title: "İsim",
@@ -256,7 +256,11 @@ const DataMaker = () => {
   useEffect(() => {
     axios
       .get("http://localhost:9000/api/personel")
-      .then((results) => setPersonel(results.data))
+      .then((results) =>
+        setPersonel(
+          results.data.filter((items) => items.Merkez_id === Merkez_id)
+        )
+      )
       .catch((error) => console.log(error));
   }, []);
 
@@ -366,8 +370,8 @@ const DataMaker = () => {
   );
 };
 
-export const expandedRowRender = () => {
-  return <DataMaker />;
+export const expandedRowRender = ({ Merkez_id }) => {
+  return <DataMaker Merkez_id={Merkez_id} />;
 };
 /* const EnvanterData = [
   { Adı: "A4 Kağıdı", Türü: "Kırtasiye", Açıklama: "Dunder Mufflin" },
