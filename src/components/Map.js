@@ -5,11 +5,15 @@ import MiniTable from "./MiniTable";
 
 const Map = () => {
   const [showMiniTable, setshowMiniTable] = useState(false);
-  const [isActive, setIsActive] = useState(false);
-  function handleClick() {
-    setshowMiniTable(true);
-    setIsActive((current) => !current);
+  const [isActive, setIsActive] = useState(null);
+  function handleActive(region) {
+    setIsActive(region);
+    setshowMiniTable(region);
   }
+  // function handleClick() {
+  //   setshowMiniTable(true);
+  //   setIsActive((current) => !current);
+  // }
   return (
     <div>
       <div>{showMiniTable && <MiniTable />}</div>
@@ -281,10 +285,10 @@ const Map = () => {
             stroke-linejoin="round"
           />
           <path
-            onClick={handleClick}
+            onClick={() => handleActive("Adıyaman")}
             style={{
-              fill: isActive ? "salmon" : "",
-              color: isActive ? "white" : "",
+              fill: isActive === "Adıyaman" ? "salmon" : "",
+              color: isActive === "Adıyaman" ? "white" : "",
             }}
             className="city"
             fill-rule="evenodd"
@@ -691,11 +695,12 @@ const Map = () => {
             stroke-width="0.983607"
             stroke-linejoin="round"
           />
+          {/* Gaziantep */}
           <path
-            onClick={handleClick}
+            onClick={() => handleActive("Gaziantep")}
             style={{
-              fill: isActive ? "salmon" : "",
-              color: isActive ? "white" : "",
+              fill: isActive === "Gaziantep" ? "salmon" : "",
+              color: isActive === "Gaziantep" ? "white" : "",
             }}
             className="city"
             fill-rule="evenodd"
@@ -916,7 +921,13 @@ const Map = () => {
             stroke-width="0.983607"
             stroke-linejoin="round"
           />
+          {/* "Kilis" */}
           <path
+            onClick={() => handleActive("Kilis")}
+            style={{
+              fill: isActive === "Kilis" ? "salmon" : "",
+              color: isActive === "Kilis" ? "white" : "",
+            }}
             className="city"
             fill-rule="evenodd"
             clip-rule="evenodd"
@@ -1106,7 +1117,13 @@ const Map = () => {
             stroke-width="0.983607"
             stroke-linejoin="round"
           />
+          {/* "Osmaniye" */}
           <path
+            onClick={() => handleActive("Osmaniye")}
+            style={{
+              fill: isActive === "Osmaniye" ? "salmon" : "",
+              color: isActive === "Osmaniye" ? "white" : "",
+            }}
             className="city"
             fill-rule="evenodd"
             clip-rule="evenodd"
@@ -1290,7 +1307,13 @@ const Map = () => {
             stroke-width="0.983607"
             stroke-linejoin="round"
           />
+          {/* "Adana" */}
           <path
+            onClick={() => handleActive("Adana")}
+            style={{
+              fill: isActive === "Adana" ? "salmon" : "",
+              color: isActive === "Adana" ? "white" : "",
+            }}
             className="city"
             fill-rule="evenodd"
             clip-rule="evenodd"
@@ -1303,7 +1326,13 @@ const Map = () => {
             stroke-width="0.983607"
             stroke-linejoin="round"
           />
+          {/* "Diyarbakır" */}
           <path
+            onClick={() => handleActive("Diyarbakır")}
+            style={{
+              fill: isActive === "Diyarbakır" ? "salmon" : "",
+              color: isActive === "Diyarbakır" ? "white" : "",
+            }}
             className="city"
             fill-rule="evenodd"
             clip-rule="evenodd"
@@ -1313,7 +1342,13 @@ const Map = () => {
             stroke-width="0.983607"
             stroke-linejoin="round"
           />
+          {/* Hatay */}
           <path
+            onClick={() => handleActive("Hatay")}
+            style={{
+              fill: isActive === "Hatay" ? "salmon" : "",
+              color: isActive === "Hatay" ? "white" : "",
+            }}
             className="city"
             fill-rule="evenodd"
             clip-rule="evenodd"
@@ -1326,7 +1361,13 @@ const Map = () => {
             stroke-width="0.983607"
             stroke-linejoin="round"
           />
+          {/* Malatya */}
           <path
+            onClick={() => handleActive("Malatya")}
+            style={{
+              fill: isActive === "Malatya" ? "salmon" : "",
+              color: isActive === "Malatya" ? "white" : "",
+            }}
             className="city"
             fill-rule="evenodd"
             clip-rule="evenodd"
@@ -1336,7 +1377,13 @@ const Map = () => {
             stroke-width="0.983607"
             stroke-linejoin="round"
           />
+          {/* Şanlıurfa */}
           <path
+            onClick={() => handleActive("Şanlıurfa")}
+            style={{
+              fill: isActive === "Şanlıurfa" ? "salmon" : "",
+              color: isActive === "Şanlıurfa" ? "white" : "",
+            }}
             className="city"
             fill-rule="evenodd"
             clip-rule="evenodd"
@@ -1346,7 +1393,13 @@ const Map = () => {
             stroke-width="0.983607"
             stroke-linejoin="round"
           />
+          {/* Kahramanmaraş */}
           <path
+            onClick={() => handleActive("Kahramanmaraş")}
+            style={{
+              fill: isActive === "Kahramanmaraş" ? "salmon" : "",
+              color: isActive === "Kahramanmaraş" ? "white" : "",
+            }}
             className="city"
             fill-rule="evenodd"
             clip-rule="evenodd"
