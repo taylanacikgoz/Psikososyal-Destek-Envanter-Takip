@@ -65,13 +65,14 @@ const NestedEnvanterTable = ({ Merkez_id }) => {
         bordered
         title={() => (
           <div>
-            <text style={{ color: "red" }}>Envanter Tablosu</text>
+            <h3 style={{ color: "red" }}>Envanter Tablosu</h3>
             <Button style={{ marginLeft: "3px" }}>Envanter Ekle</Button>
           </div>
         )}
         columns={envanterColumns}
         dataSource={envanter}
         pagination={false}
+        rowKey="Envanter_id"
       />
     </div>
   );
@@ -134,13 +135,14 @@ export const AsılEnvanterTable = () => {
         bordered
         title={() => (
           <div>
-            <text style={{ color: "red" }}>Envanter Tablosu</text>
+            <h3 style={{ color: "red" }}>Envanter Tablosu</h3>
             <Button style={{ marginLeft: "3px" }}>Envanter Ekle</Button>
           </div>
         )}
         columns={envanterColumns}
         dataSource={envanter2}
         pagination={false}
+        rowKey="Envanter_id"
       />
     </div>
   );

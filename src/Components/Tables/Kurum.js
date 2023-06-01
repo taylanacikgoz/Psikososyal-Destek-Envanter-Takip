@@ -73,13 +73,14 @@ const NestedKurumTable = ({ Merkez_id }) => {
         bordered
         title={() => (
           <div>
-            <text style={{ color: "red" }}>Kurum Tablosu</text>
+            <h3 style={{ color: "red" }}>Kurum Tablosu</h3>
             <Button style={{ marginLeft: "3px" }}>Kurum Ekle</Button>
           </div>
         )}
         columns={kurumColumns}
         dataSource={kurum}
         pagination={false}
+        rowKey="Kurum_id"
       />
     </div>
   );
@@ -151,13 +152,14 @@ export const AsılKurumTable = ({ Merkez_id }) => {
         bordered
         title={() => (
           <div>
-            <text style={{ color: "red" }}>Kurum Tablosu</text>
+            <h3 style={{ color: "red" }}>Kurum Tablosu</h3>
             <Button style={{ marginLeft: "3px" }}>Kurum Ekle</Button>
           </div>
         )}
         columns={kurumColumns}
         dataSource={kurum2}
         pagination={false}
+        rowKey="Kurum_id"
       />
     </div>
   );

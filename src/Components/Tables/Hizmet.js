@@ -73,13 +73,14 @@ const NestedHizmetTable = ({ Merkez_id }) => {
         bordered
         title={() => (
           <div>
-            <text style={{ color: "red" }}>Hizmet Tablosu</text>
+            <h3 style={{ color: "red" }}>Hizmet Tablosu</h3>
             <Button style={{ marginLeft: "3px" }}>Hizmet Ekle</Button>
           </div>
         )}
         columns={hizmetColumns}
         dataSource={hizmet}
         pagination={false}
+        rowKey="Hizmet_id"
       />
     </div>
   );
@@ -151,13 +152,14 @@ export const AsılHizmetTable = ({ Merkez_id }) => {
         bordered
         title={() => (
           <div>
-            <text style={{ color: "red" }}>Hizmet Tablosu</text>
+            <h3 style={{ color: "red" }}>Hizmet Tablosu</h3>
             <Button style={{ marginLeft: "3px" }}>Hizmet Ekle</Button>
           </div>
         )}
         columns={hizmetColumns}
         dataSource={hizmet2}
         pagination={false}
+        rowKey="Hizmet_id"
       />
     </div>
   );

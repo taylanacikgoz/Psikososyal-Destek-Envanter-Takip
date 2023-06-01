@@ -117,6 +117,7 @@ const MyTable = () => {
         Yeni Merkez Ekle
       </Button>
       <Table
+        rowKey="Merkez_id"
         columns={columns}
         dataSource={data}
         expandable={{
