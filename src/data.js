@@ -110,6 +110,58 @@ const dummydata = {
       "asdasd asdasda",
     ],
   },
+  initialStates: [
+    {
+      id: 1,
+      city: "Adana",
+      selected: false,
+    },
+    {
+      id: 2,
+      city: "Adıyaman",
+      selected: false,
+    },
+    {
+      id: 3,
+      city: "Diyarbakır",
+      selected: false,
+    },
+    {
+      id: 4,
+      city: "Gaziantep",
+      selected: false,
+    },
+    {
+      id: 5,
+      city: "Hatay",
+      selected: false,
+    },
+    {
+      id: 6,
+      city: "Kahramanmaraş",
+      selected: false,
+    },
+    {
+      id: 7,
+      city: "Kilis",
+      selected: false,
+    },
+    {
+      id: 8,
+      city: "Malatya",
+      selected: false,
+    },
+    {
+      id: 9,
+      city: "Osmaniye",
+      selected: false,
+    },
+    {
+      id: 9,
+      city: "Şanlıurfa",
+      selected: false,
+    },
+  ],
 };
 
 export default dummydata;
