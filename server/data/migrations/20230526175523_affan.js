@@ -17,8 +17,8 @@ exports.up = function (knex) {
     .createTable("Merkez", (Merkez) => {
       Merkez.increments("Merkez_id");
       Merkez.string("Merkez_Adi", 32).notNullable().unique();
-      Merkez.integer("Iletisim-1", 32);
-      Merkez.integer("Iletisim-2", 32);
+      Merkez.integer("Iletisim_1", 32);
+      Merkez.integer("Iletisim_2", 32);
       Merkez.string("Adres").notNullable();
       Merkez.string("Tam_Koordinatlar");
       Merkez.date("Acilis_Tarihi");
