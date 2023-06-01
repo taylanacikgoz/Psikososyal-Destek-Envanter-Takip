@@ -65,8 +65,8 @@ const NestedPersonelTable = ({ Merkez_id }) => {
     },
     {
       title: "Görev Bölgesi",
-      dataIndex: "Saha_Adresi",
-      key: "Saha_Adresi",
+      dataIndex: "Sehir_Adi",
+      key: "Sehir_Adi",
     },
     {
       title: "TC No",
@@ -128,13 +128,14 @@ const NestedPersonelTable = ({ Merkez_id }) => {
         bordered
         title={() => (
           <div>
-            <text style={{ color: "red" }}>Personel Tablosu</text>
+            <h3 style={{ color: "red" }}>Personel Tablosu</h3>
             <Button style={{ marginLeft: "3px" }}>Personel Ekle</Button>
           </div>
         )}
         columns={personelColumns}
         dataSource={personel}
         pagination={false}
+        rowKey="Personel_id"
       />
     </div>
   );
@@ -260,13 +261,14 @@ export const AsılPersonelTable = ({ Merkez_id }) => {
         bordered
         title={() => (
           <div>
-            <text style={{ color: "red" }}>Personel Tablosu</text>
+            <h3 style={{ color: "red" }}>Personel Tablosu</h3>
             <Button style={{ marginLeft: "3px" }}>Personel Ekle</Button>
           </div>
         )}
         columns={personelColumns}
         dataSource={personel2}
         pagination={false}
+        rowKey="Personel_id"
       />
     </div>
   );

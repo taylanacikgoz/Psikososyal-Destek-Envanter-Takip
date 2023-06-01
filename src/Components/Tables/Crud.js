@@ -36,47 +36,57 @@ const Crud = ({ dataAl, editRow }) => {
 
   return (
     <Form form={form} layout="vertical" onFinish={handleSave}>
-      <Form.Item
-        label="Merkez Adı"
-        name="Merkez_Adi"
-        rules={[{ required: true }]}
+      <div
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          flexDirection: "row",
+          width: "40%",
+          gap: "1rem",
+        }}
       >
-        <Input />
-      </Form.Item>
-      <Form.Item
-        label="Iletisim-1"
-        name="Iletisim_1"
-        rules={[{ required: true }]}
-      >
-        <Input />
-      </Form.Item>
-      <Form.Item
-        label="Iletisim-2"
-        name="Iletisim_2"
-        rules={[{ required: true }]}
-      >
-        <Input />
-      </Form.Item>
-      <Form.Item label="Adres" name="Adres" rules={[{ required: true }]}>
-        <Input />
-      </Form.Item>
-      <Form.Item
-        label="Tam Koordinatlar"
-        name="Tam_Koordinatlar"
-        rules={[{ required: true }]}
-      >
-        <Input />
-      </Form.Item>
-      <Form.Item
-        label="Açılış Tarihi"
-        name="Acilis_Tarihi"
-        rules={[{ required: true }]}
-      >
-        <Input />
-      </Form.Item>
-      <Form.Item label="Şehir" name="Sehir_id" rules={[{ required: true }]}>
-        <Input />
-      </Form.Item>
+        <Form.Item
+          label="Merkez Adı"
+          name="Merkez_Adi"
+          rules={[{ required: true }]}
+        >
+          <Input />
+        </Form.Item>
+        <Form.Item
+          label="Iletisim-1"
+          name="Iletisim_1"
+          rules={[{ required: true }]}
+        >
+          <Input />
+        </Form.Item>
+        <Form.Item
+          label="Iletisim-2"
+          name="Iletisim_2"
+          rules={[{ required: true }]}
+        >
+          <Input />
+        </Form.Item>
+        <Form.Item label="Adres" name="Adres" rules={[{ required: true }]}>
+          <Input />
+        </Form.Item>
+        <Form.Item
+          label="Tam Koordinatlar"
+          name="Tam_Koordinatlar"
+          rules={[{ required: true }]}
+        >
+          <Input />
+        </Form.Item>
+        <Form.Item
+          label="Açılış Tarihi"
+          name="Acilis_Tarihi"
+          rules={[{ required: true }]}
+        >
+          <Input />
+        </Form.Item>
+        <Form.Item label="Şehir" name="Sehir_id" rules={[{ required: true }]}>
+          <Input />
+        </Form.Item>
+      </div>
       <Form.Item>
         <Button type="primary" htmlType="submit" loading={loading}>
           Kaydet
