@@ -9,6 +9,14 @@ router.get("/merkez", async (req, res, next) => {
     next(error);
   }
 });
+router.get("/merkez/:Merkez_id", async (req, res, next) => {
+  try {
+    const Merkez = await dataModel.getById(req.params.Merkez_id);
+    res.status(201).json(Merkez);
+  } catch (error) {
+    next(error);
+  }
+});
 
 router.delete("/merkez/:Merkez_id", async (req, res, next) => {
   try {

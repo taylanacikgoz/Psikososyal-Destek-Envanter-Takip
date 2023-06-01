@@ -9,8 +9,9 @@ const getAll = async () => {
   return Merkez;
 };
 
-const getById = (Merkez_id) => {
-  return db("Merkez").where("Merkez_id", Merkez_id).first();
+const getById = async (Merkez_id) => {
+  const MerkezByID = await db("Merkez").where("Merkez_id", Merkez_id).first();
+  return MerkezByID;
 };
 
 const createMerkez = async (Merkez) => {
