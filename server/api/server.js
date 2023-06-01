@@ -2,6 +2,8 @@ const sehirRoute = require("./Routes/SehirRoutes/sehir-router");
 const personelRoute = require("./Routes/PersonelRoutes/personel-router");
 const envanterRoute = require("./Routes/EnvanterRoutes/envanter-router");
 const merkezRoute = require("./Routes/MerkezRoutes/merkez-router");
+const kurumRoute = require("./Routes/KurumRoutes/kurum-router");
+const hizmetRoute = require("./Routes/HizmetRoutes/hizmet-router");
 
 const express = require("express");
 const server = express();
@@ -32,5 +34,7 @@ server.use("/api/", sehirRoute);
 server.use("/api/", personelRoute);
 server.use("/api/", envanterRoute);
 server.use("/api/", merkezRoute);
+server.use("/api/", hizmetRoute);
+server.use("/api/", kurumRoute);
 
 module.exports = server;

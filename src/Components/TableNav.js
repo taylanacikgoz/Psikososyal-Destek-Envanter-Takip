@@ -2,30 +2,67 @@ import React from "react";
 import "../Css/reset.css";
 import "../Css/TableNav.css";
 
-import Table from "./Table";
+import Table from "./Tables/Table";
 import { useState } from "react";
-import PersonelTable from "./PersonelTable";
+import { AsılPersonelTable } from "./Tables/PersonelTable";
+import { AsılEnvanterTable } from "./Tables/Envanter";
+import { AsılHizmetTable } from "./Tables/Hizmet";
+import { AsılKurumTable } from "./Tables/Kurum";
 function TableNav() {
   const [showTable, setshowTable] = useState(false);
   const [showPersonelTable, setshowPersonelTable] = useState(false);
+  const [showEnvanterTable, setshowEnvanterTable] = useState(false);
+  const [showHizmetTable, setshowHizmetTable] = useState(false);
+  const [showKurumTable, setshowKurumTable] = useState(false);
   function handleClick() {
     setshowTable(true);
     setshowPersonelTable(false);
+    setshowEnvanterTable(false);
+    setshowHizmetTable(false);
+    setshowKurumTable(false);
   }
   function handlePersonelClick() {
     setshowPersonelTable(true);
     setshowTable(false);
+    setshowEnvanterTable(false);
+    setshowHizmetTable(false);
+    setshowKurumTable(false);
+  }
+  function handleEnvanterClick() {
+    setshowEnvanterTable(true);
+    setshowPersonelTable(false);
+    setshowTable(false);
+    setshowHizmetTable(false);
+    setshowKurumTable(false);
+  }
+  function handleHizmetClick() {
+    setshowEnvanterTable(false);
+    setshowPersonelTable(false);
+    setshowTable(false);
+    setshowHizmetTable(true);
+    setshowKurumTable(false);
+  }
+  function handleKurumClick() {
+    setshowEnvanterTable(false);
+    setshowPersonelTable(false);
+    setshowTable(false);
+    setshowHizmetTable(false);
+    setshowKurumTable(true);
   }
   return (
     <div>
       <div className="table-nav-bar">
         <button onClick={handleClick}>Merkezler</button>
         <button onClick={handlePersonelClick}>Personeller</button>
-        <button>Hizmetler</button>
-        <button>Kurumlar</button>
+        <button onClick={handleEnvanterClick}>Envanter</button>
+        <button onClick={handleHizmetClick}>Hizmet</button>
+        <button onClick={handleKurumClick}>Kurumlar</button>
       </div>
       <div>{showTable && <Table />}</div>
-      <div>{showPersonelTable && <PersonelTable />}</div>
+      <div>{showPersonelTable && <AsılPersonelTable />}</div>
+      <div>{showEnvanterTable && <AsılEnvanterTable />}</div>
+      <div>{showKurumTable && <AsılKurumTable />}</div>
+      <div>{showHizmetTable && <AsılHizmetTable />}</div>
     </div>
   );
 }

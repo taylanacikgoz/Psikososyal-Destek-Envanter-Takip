@@ -18,7 +18,7 @@ import { useDispatch } from "react-redux";
 import Map from "./components/Map";
 import Bilgi from "./components/Bilgi";
 import axios from "axios";
-import Table from "./components/Table";
+import Table from "./components/Tables/Table";
 import İletisim from "./components/İletisim";
 import MiniTable from "./components/MiniTable";
 import TableNav from "./components/TableNav";
