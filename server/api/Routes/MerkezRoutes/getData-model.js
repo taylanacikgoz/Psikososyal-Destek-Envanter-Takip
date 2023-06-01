@@ -9,10 +9,25 @@ const getAll = async () => {
   return Merkez;
 };
 
+const getById = (Merkez_id) => {
+  return db("Merkez").where("Merkez_id", Merkez_id).first();
+};
+
+const createMerkez = async (Merkez) => {
+  const insertedId = await db("Merkez").insert(Merkez);
+  const inserted = await db("Merkez").where("Merkez_id", insertedId[0]);
+  return inserted;
+};
+
+const updateMerkez = async (Merkez, Merkez_id) => {
+  await db("Merkez").where("Merkez_id", Merkez_id).first().update(Merkez);
+  return getById(Merkez_id);
+};
+
 const deleteById = async (Merkez_id) => {
   await db("Merkez as m").where("m.Merkez_id", Merkez_id).delete();
   const hepsiniAl = await getAll();
   return hepsiniAl;
 };
 
-module.exports = { getAll, deleteById };
+module.exports = { getAll, deleteById, createMerkez, getById, updateMerkez };
