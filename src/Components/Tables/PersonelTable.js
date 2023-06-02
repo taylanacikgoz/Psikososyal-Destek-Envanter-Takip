@@ -1,26 +1,26 @@
+import React, { useState, useEffect } from "react";
+import { Table, Button, Form, Input, Modal, Badge, Dropdown } from "antd";
 import { DownOutlined } from "@ant-design/icons";
-import { Badge, Dropdown, Table, Button } from "antd";
-import { MerkezData, expandedRowRender, items } from "./Expandables";
 import axios from "axios";
-import { useState, useEffect } from "react";
 
 const NestedPersonelTable = ({ Merkez_id }) => {
   const [personel, setPersonel] = useState([]);
+
   useEffect(() => {
-    axios
-      .get("http://localhost:9000/api/personel")
-      .then((results) =>
-        setPersonel(
-          results.data.filter((items) => items.Merkez_id === Merkez_id)
-        )
-      )
-      .catch((error) => console.log(error));
+    fetchPersonelData();
   }, []);
 
-  const items = [
-    { key: "1", title: "Sil" },
-    { key: "2", title: "Düzenle" },
-  ];
+  const fetchPersonelData = () => {
+    axios
+      .get("http://localhost:9000/api/personel")
+      .then((results) => {
+        const filteredPersonel = results.data.filter(
+          (item) => item.Merkez_id === Merkez_id
+        );
+        setPersonel(filteredPersonel);
+      })
+      .catch((error) => console.log(error));
+  };
 
   const [personelColumns, setPersonelColumns] = useState([
     {
@@ -105,23 +105,8 @@ const NestedPersonelTable = ({ Merkez_id }) => {
       dataIndex: "Rol_Adi",
       key: "Rol_Adi",
     },
-    {
-      title: "Action",
-      dataIndex: "operation",
-      key: "operation",
-      render: () => (
-        <Dropdown
-          menu={{
-            items,
-          }}
-        >
-          <a>
-            Seç <DownOutlined />
-          </a>
-        </Dropdown>
-      ),
-    },
   ]);
+
   return (
     <div>
       <Table
@@ -129,7 +114,6 @@ const NestedPersonelTable = ({ Merkez_id }) => {
         title={() => (
           <div>
             <h3 style={{ color: "red" }}>Personel Tablosu</h3>
-            <Button style={{ marginLeft: "3px" }}>Personel Ekle</Button>
           </div>
         )}
         columns={personelColumns}
@@ -141,19 +125,181 @@ const NestedPersonelTable = ({ Merkez_id }) => {
   );
 };
 
-export const AsılPersonelTable = ({ Merkez_id }) => {
+export const AsılPersonelTable = () => {
   const [personel2, setPersonel2] = useState([]);
-  useEffect(() => {
+  const [selectedPersonel, setSelectedPersonel] = useState(null);
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const getData = () => {
     axios
       .get("http://localhost:9000/api/personel")
       .then((results) => setPersonel2(results.data))
       .catch((error) => console.log(error));
+  };
+
+  useEffect(() => {
+    getData();
   }, []);
 
-  const items = [
-    { key: "1", title: "Sil" },
-    { key: "2", title: "Düzenle" },
-  ];
+  const handleEdit = (record) => {
+    setSelectedPersonel(record);
+    setIsModalVisible(true);
+  };
+
+  const handleDelete = (record) => {
+    // Implement delete logic here, e.g., make a DELETE request to the API
+    axios
+      .delete(`http://localhost:9000/api/personel/${record.Personel_id}`)
+      .then(() => {
+        getData(); // Refresh the table after deleting
+      })
+      .catch((error) => console.log(error));
+  };
+  const handleAdd = () => {
+    setIsModalVisible(true);
+    setSelectedPersonel(null);
+  };
+  const handleSave = (values) => {
+    if (selectedPersonel) {
+      axios
+        .put(
+          `http://localhost:9000/api/personel/${selectedPersonel.Personel_id}`,
+          values
+        )
+        .then(() => {
+          setIsModalVisible(false);
+          getData();
+        })
+        .catch((error) => console.log(error));
+    } else {
+      axios
+        .post("http://localhost:9000/api/personel", values)
+        .then(() => {
+          setIsModalVisible(false);
+          getData();
+        })
+        .catch((error) => console.log(error));
+    }
+  };
+  const PersonelForm = ({ onCancel, onSave, initialValues }) => {
+    const [form] = Form.useForm();
+
+    useEffect(() => {
+      form.resetFields();
+    }, [form]);
+
+    const handleFormSubmit = () => {
+      form
+        .validateFields()
+        .then((values) => {
+          onSave(values);
+        })
+        .catch((error) => console.log(error));
+    };
+
+    return (
+      <Modal
+        open={isModalVisible}
+        onCancel={onCancel}
+        onOk={handleFormSubmit}
+        destroyOnClose
+      >
+        <Form form={form} layout="vertical" initialValues={initialValues}>
+          <Form.Item
+            name="Personel_Adi"
+            label="Personel_Adi"
+            rules={[{ required: true }]}
+          >
+            <Input placeholder="İsim girin" />
+          </Form.Item>
+
+          <Form.Item
+            name="Personel_Soyadi"
+            label="Personel_Soyadi"
+            rules={[{ required: true }]}
+          >
+            <Input placeholder="Soyad girin" />
+          </Form.Item>
+          <Form.Item
+            name="Iletisim"
+            label="Iletisim"
+            rules={[{ required: true }]}
+          >
+            <Input placeholder="Birincil İletişim" />
+          </Form.Item>
+          <Form.Item name="Email" label="Email" rules={[{ required: true }]}>
+            <Input placeholder="Email" />
+          </Form.Item>
+          <Form.Item
+            name="Kan_Grubu"
+            label="Kan_Grubu"
+            rules={[{ required: true }]}
+          >
+            <Input placeholder="Kan Grubu" />
+          </Form.Item>
+          <Form.Item
+            name="Saha_Adresi"
+            label="Saha_Adresi"
+            rules={[{ required: true }]}
+          >
+            <Input placeholder="Hangi sahada görevli?" />
+          </Form.Item>
+          <Form.Item
+            name="TC_Numara"
+            label="TC_Numara"
+            rules={[{ required: true }]}
+          >
+            <Input placeholder="T.C. No" />
+          </Form.Item>
+          <Form.Item
+            name="Ikametgah"
+            label="Ikametgah"
+            rules={[{ required: true }]}
+          >
+            <Input placeholder="Ikametgah" />
+          </Form.Item>
+          <Form.Item
+            name="Calisma_Durumu"
+            label="Calisma_Durumu"
+            rules={[{ required: true }]}
+          >
+            <Input placeholder="Calısma_Durumu" />
+          </Form.Item>
+          <Form.Item
+            name="Acil_Durum_Kisisi"
+            label="Acil_Durum_Kisisi"
+            rules={[{ required: true }]}
+          >
+            <Input placeholder="Acil_Durum_Kisisi" />
+          </Form.Item>
+          <Form.Item
+            name="Acil_Durum_Iletisim"
+            label="Acil_Durum_Iletisim"
+            rules={[{ required: true }]}
+          >
+            <Input placeholder="Acil Durum İletişim" />
+          </Form.Item>
+          <Form.Item
+            name="Acil_Durum_Bag"
+            label="Acil_Durum_Bag"
+            rules={[{ required: true }]}
+          >
+            <Input placeholder="Acil Durum Bağ" />
+          </Form.Item>
+          <Form.Item
+            name="Merkez_id"
+            label="Merkez_id"
+            rules={[{ required: true }]}
+          >
+            <Input placeholder="Merkez_id" />
+          </Form.Item>
+          <Form.Item name="Rol_id" label="Rol_id" rules={[{ required: true }]}>
+            <Input placeholder="Rol" />
+          </Form.Item>
+        </Form>
+      </Modal>
+    );
+  };
 
   const [personelColumns, setPersonelColumns] = useState([
     {
@@ -242,19 +388,19 @@ export const AsılPersonelTable = ({ Merkez_id }) => {
       title: "Action",
       dataIndex: "operation",
       key: "operation",
-      render: () => (
-        <Dropdown
-          menu={{
-            items,
-          }}
-        >
-          <a>
-            Seç <DownOutlined />
-          </a>
-        </Dropdown>
+      render: (_, record) => (
+        <>
+          <Button type="link" onClick={() => handleEdit(record)}>
+            Güncelle
+          </Button>
+          <Button type="link" onClick={() => handleDelete(record)}>
+            Sil
+          </Button>
+        </>
       ),
     },
   ]);
+
   return (
     <div>
       <Table
@@ -262,7 +408,9 @@ export const AsılPersonelTable = ({ Merkez_id }) => {
         title={() => (
           <div>
             <h3 style={{ color: "red" }}>Personel Tablosu</h3>
-            <Button style={{ marginLeft: "3px" }}>Personel Ekle</Button>
+            <Button onClick={handleAdd} style={{ marginLeft: "3px" }}>
+              Personel Ekle
+            </Button>
           </div>
         )}
         columns={personelColumns}
@@ -270,6 +418,15 @@ export const AsılPersonelTable = ({ Merkez_id }) => {
         pagination={false}
         rowKey="Personel_id"
       />
+
+      {isModalVisible && (
+        <PersonelForm
+          open={isModalVisible}
+          onCancel={() => setIsModalVisible(false)}
+          onSave={handleSave}
+          initialValues={selectedPersonel}
+        />
+      )}
     </div>
   );
 };

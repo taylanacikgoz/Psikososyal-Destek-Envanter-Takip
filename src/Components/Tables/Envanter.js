@@ -1,5 +1,5 @@
 import { DownOutlined } from "@ant-design/icons";
-import { Badge, Dropdown, Table, Button } from "antd";
+import { Badge, Dropdown, Table, Button, Modal, Input, Form } from "antd";
 import { MerkezData, expandedRowRender, items } from "./Expandables";
 import axios from "axios";
 import { useState, useEffect } from "react";
@@ -17,11 +17,6 @@ const NestedEnvanterTable = ({ Merkez_id }) => {
       .catch((error) => console.log(error));
   }, []);
 
-  const items = [
-    { key: "1", title: "Sil" },
-    { key: "2", title: "Düzenle" },
-  ];
-
   const [envanterColumns, setEnvanterColumns] = useState([
     {
       title: "Envanter Adı",
@@ -42,22 +37,6 @@ const NestedEnvanterTable = ({ Merkez_id }) => {
       dataIndex: "Aciklama",
       key: "Aciklama",
     },
-    {
-      title: "Action",
-      dataIndex: "operation",
-      key: "operation",
-      render: () => (
-        <Dropdown
-          menu={{
-            items,
-          }}
-        >
-          <a>
-            Seç <DownOutlined />
-          </a>
-        </Dropdown>
-      ),
-    },
   ]);
   return (
     <div>
@@ -66,7 +45,6 @@ const NestedEnvanterTable = ({ Merkez_id }) => {
         title={() => (
           <div>
             <h3 style={{ color: "red" }}>Envanter Tablosu</h3>
-            <Button style={{ marginLeft: "3px" }}>Envanter Ekle</Button>
           </div>
         )}
         columns={envanterColumns}
@@ -80,17 +58,105 @@ const NestedEnvanterTable = ({ Merkez_id }) => {
 
 export const AsılEnvanterTable = () => {
   const [envanter2, setEnvanter2] = useState([]);
-  useEffect(() => {
+  const [selectedEnvanter, setSelectedEnvanter] = useState(null);
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const getData = () => {
     axios
       .get("http://localhost:9000/api/envanter")
       .then((results) => setEnvanter2(results.data))
       .catch((error) => console.log(error));
+  };
+
+  useEffect(() => {
+    getData();
   }, []);
 
-  const items = [
-    { key: "1", title: "Sil" },
-    { key: "2", title: "Düzenle" },
-  ];
+  const handleEdit = (record) => {
+    setSelectedEnvanter(record);
+    setIsModalVisible(true);
+  };
+
+  const handleDelete = (record) => {
+    axios
+      .delete(`http://localhost:9000/api/envanter/${record.Envanter_id}`)
+      .then(() => {
+        getData();
+      })
+      .catch((error) => console.log(error));
+  };
+  const handleAdd = () => {
+    setIsModalVisible(true);
+    setSelectedEnvanter(null);
+  };
+  const handleSave = (values) => {
+    if (selectedEnvanter) {
+      axios
+        .put(
+          `http://localhost:9000/api/envanter/${selectedEnvanter.Envanter_id}`,
+          values
+        )
+        .then(() => {
+          setIsModalVisible(false);
+          getData();
+        })
+        .catch((error) => console.log(error));
+    } else {
+      axios
+        .post("http://localhost:9000/api/envanter", values)
+        .then(() => {
+          setIsModalVisible(false);
+          getData();
+        })
+        .catch((error) => console.log(error));
+    }
+  };
+  const PersonelForm = ({ onCancel, onSave, initialValues }) => {
+    const [form] = Form.useForm();
+
+    useEffect(() => {
+      form.resetFields();
+    }, [form]);
+
+    const handleFormSubmit = () => {
+      form
+        .validateFields()
+        .then((values) => {
+          onSave(values);
+        })
+        .catch((error) => console.log(error));
+    };
+
+    return (
+      <Modal
+        open={isModalVisible}
+        onCancel={onCancel}
+        onOk={handleFormSubmit}
+        destroyOnClose
+      >
+        <Form form={form} layout="vertical" initialValues={initialValues}>
+          <Form.Item
+            name="Envanter_Adi"
+            label="Envanter_Adi"
+            rules={[{ required: true }]}
+          >
+            <Input placeholder="Envanter adı girin" />
+          </Form.Item>
+
+          <Form.Item name="Türü" label="Türü" rules={[{ required: true }]}>
+            <Input placeholder="Türü" />
+          </Form.Item>
+          <Form.Item
+            name="Aciklama"
+            label="Açıklama"
+            rules={[{ required: true }]}
+          >
+            <Input placeholder="Açıklama" />
+          </Form.Item>
+        </Form>
+      </Modal>
+    );
+  };
 
   const [envanterColumns, setEnvanterColumns] = useState([
     {
@@ -116,16 +182,15 @@ export const AsılEnvanterTable = () => {
       title: "Action",
       dataIndex: "operation",
       key: "operation",
-      render: () => (
-        <Dropdown
-          menu={{
-            items,
-          }}
-        >
-          <a>
-            Seç <DownOutlined />
-          </a>
-        </Dropdown>
+      render: (_, record) => (
+        <>
+          <Button type="link" onClick={() => handleEdit(record)}>
+            Güncelle
+          </Button>
+          <Button type="link" onClick={() => handleDelete(record)}>
+            Sil
+          </Button>
+        </>
       ),
     },
   ]);
@@ -136,7 +201,9 @@ export const AsılEnvanterTable = () => {
         title={() => (
           <div>
             <h3 style={{ color: "red" }}>Envanter Tablosu</h3>
-            <Button style={{ marginLeft: "3px" }}>Envanter Ekle</Button>
+            <Button onClick={handleAdd} style={{ marginLeft: "3px" }}>
+              Envanter Ekle
+            </Button>
           </div>
         )}
         columns={envanterColumns}
@@ -144,6 +211,15 @@ export const AsılEnvanterTable = () => {
         pagination={false}
         rowKey="Envanter_id"
       />
+
+      {isModalVisible && (
+        <PersonelForm
+          open={isModalVisible}
+          onCancel={() => setIsModalVisible(false)}
+          onSave={handleSave}
+          initialValues={selectedEnvanter}
+        />
+      )}
     </div>
   );
 };

@@ -58,11 +58,11 @@ function TableNav() {
         <button onClick={handleHizmetClick}>Hizmet</button>
         <button onClick={handleKurumClick}>Kurumlar</button>
       </div>
-      <div>{showTable && <Table />}</div>
-      <div>{showPersonelTable && <AsılPersonelTable />}</div>
-      <div>{showEnvanterTable && <AsılEnvanterTable />}</div>
-      <div>{showKurumTable && <AsılKurumTable />}</div>
-      <div>{showHizmetTable && <AsılHizmetTable />}</div>
+      <div>{showTable ? <Table /> : null}</div>
+      <div>{showPersonelTable ? <AsılPersonelTable /> : null}</div>
+      <div>{showEnvanterTable ? <AsılEnvanterTable /> : null}</div>
+      <div>{showKurumTable ? <AsılKurumTable /> : null}</div>
+      <div>{showHizmetTable ? <AsılHizmetTable /> : null}</div>
     </div>
   );
 }
