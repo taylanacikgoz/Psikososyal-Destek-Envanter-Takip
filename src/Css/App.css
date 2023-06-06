@@ -121,11 +121,10 @@
 }
 
 .column-right {
-  border: solid;
-  width: 100%;
-  height: 100%;
-}
-
-.nav-bar-text {
-  color: #000c5c;
+  background-image: url("../photo/mapZone.png");
+  border: solid #ffffff;
+  border-radius: 1rem;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
 }
