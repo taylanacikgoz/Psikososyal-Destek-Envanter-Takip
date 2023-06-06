@@ -4,8 +4,11 @@ import { MerkezData, expandedRowRender, items } from "./Expandables";
 import axios from "axios";
 import { useState, useEffect } from "react";
 
-const NestedEnvanterTable = ({ Merkez_id }) => {
+const NestedEnvanterTable = ({ Merkez_id, token }) => {
   const [envanter, setEnvanter] = useState([]);
+
+  //axios.get(webApiUrl, { headers: {"Authorization" : Bearer ${tokenStr}} });
+
   useEffect(() => {
     axios
       .get("http://localhost:9000/api/envanter")
@@ -40,18 +43,22 @@ const NestedEnvanterTable = ({ Merkez_id }) => {
   ]);
   return (
     <div>
-      <Table
-        bordered
-        title={() => (
-          <div>
-            <h3 style={{ color: "red" }}>Envanter Tablosu</h3>
-          </div>
-        )}
-        columns={envanterColumns}
-        dataSource={envanter}
-        pagination={false}
-        rowKey="Envanter_id"
-      />
+      {token ? (
+        <Table
+          bordered
+          title={() => (
+            <div>
+              <h3 style={{ color: "red" }}>Envanter Tablosu</h3>
+            </div>
+          )}
+          columns={envanterColumns}
+          dataSource={envanter}
+          pagination={false}
+          rowKey="Envanter_id"
+        />
+      ) : (
+        <div>TOKEN AL</div>
+      )}
     </div>
   );
 };

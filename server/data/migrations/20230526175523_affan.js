@@ -32,6 +32,7 @@ exports.up = function (knex) {
     .createTable("Personel", (Personel) => {
       Personel.increments("Personel_id");
       Personel.string("Personel_Adi", 32).notNullable();
+      Personel.string("Password").notNullable();
       Personel.string("Personel_Soyadi", 32).notNullable();
       Personel.string("Iletisim").notNullable().unique(); //Cep No ve Email ayrı mı verilmeli
       Personel.string("Email");
