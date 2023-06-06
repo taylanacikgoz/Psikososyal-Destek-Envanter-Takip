@@ -36,7 +36,7 @@ function Navigation() {
   return (
     <div className="nav-bar">
       <Switch>
-        <Route exact path="/" component={Anasayfa} />
+        <Route exact path="/" />
         <Route
           path="/girisyap"
           component={() => <Login onSave={handleSave} token={localToken} />}

@@ -5,7 +5,7 @@ import Map from "./Map";
 const Anasayfa = () => {
   return (
     <div className="Anasayfa">
-      <div className=""></div>
+      <Map />
     </div>
   );
 };
