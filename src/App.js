@@ -1,7 +1,8 @@
 import "./Css/App.css";
-import Header from "./components/Header";
-import Navigation from "./components/Navigation";
+import Header from "./Components/Header";
+import Navigation from "./Components/Navigation";
 import Destek from "./photo/destek.png";
+import Map from "./Components/Map";
 
 function App() {
   return (
@@ -30,7 +31,9 @@ function App() {
               </div>
             </div>
 
-            <div className="column-right"></div>
+            <div className="column-right">
+              <Map />
+            </div>
           </div>
         </div>
       </div>

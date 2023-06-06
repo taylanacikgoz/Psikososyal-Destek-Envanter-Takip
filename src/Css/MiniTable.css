@@ -5,12 +5,24 @@
   top: 25%;
   bottom: 54.17%;
 
-  width: 375px;
-  height: 230px;
-  background: #ffffff;
+  width: 200px;
+  height: 100px;
+  background: #3c4058;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 30px;
+  border-radius: 10px;
   z-index: 2;
+}
+
+.city-antakya:hover
+  .city-adana:hover
+  .city-osmaniye:hover
+  .city-kilis:hover
+  .city-gaziantep:hover
+  .city-şanlıurfa:hover
+  .city-adıyaman:hover
+  .city-kahramanmaraş:hover
+  .city-diyarbakır:hover
+  .city-malatya:hover {
 }
 
 .city {
@@ -37,9 +49,10 @@
 }
 
 .infolar {
+  font-family: Roboto;
+  font-style: Medium;
+  color: white;
   box-sizing: border-box;
-  border: solid;
-  color: #6f7372;
   margin: 10px;
 }
 

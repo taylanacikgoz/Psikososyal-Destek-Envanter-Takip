@@ -7,24 +7,7 @@ function MiniTable() {
     <div className="box">
       <div className="city">MALATYA</div>
       <div className="merkez"></div>
-      <div className="infolar">
-        <div className="rows">
-          <p className="title-column">Adres</p>
-          <p className="text-data"></p>
-        </div>
-        <div className="rows">
-          <p className="title-column">Telefon</p>
-          <p className="text-data"></p>
-        </div>
-        <div className="rows">
-          <p className="title-column">Kurumlar</p>
-          <p className="text-data"></p>
-        </div>
-        <div className="rows">
-          <p className="title-column">Personeller</p>
-          <p className="text-data"></p>
-        </div>
-      </div>
+      <div className="infolar">telefon bilgisi buraya gelecek</div>
     </div>
   );
 }
