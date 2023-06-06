@@ -1,19 +1,11 @@
 import React from "react";
-import "../Css/Header.css";
+import Logo from "../photo/logo1.png";
 
 function Header() {
   return (
     <div className="header">
-      <img
-        className="logo-img"
-        alt="Resim Yükleniyor"
-        src={
-          "https://tarde.org.tr/wp-content/uploads/2021/11/38474474_279289332849083_2504783295909199872_n-768x838.jpg"
-        }
-      />
-      <div className="header-text">
-        Travma ve Afet Ruh Sağlığı Çalışmaları Derneği
-      </div>
+      <img className="logo-img" alt="Resim Yükleniyor" src={Logo} />
+      <div className="header-text">Psikososyal Destek Projesi</div>
     </div>
   );
 }

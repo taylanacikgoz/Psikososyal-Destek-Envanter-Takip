@@ -20,9 +20,9 @@ const Map = () => {
       <div>
         <svg
           className="map-svg"
-          width="1418*0,75"
-          height="600*0,75"
-          viewBox="0 0 1418 600"
+          width="100%"
+          height="50vh"
+          viewBox="0 0 1440 600"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >

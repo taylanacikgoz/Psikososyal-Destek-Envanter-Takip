@@ -1,9 +1,131 @@
-.Haberler {
-  height: 20rem;
-  text-align: center;
-}
 .App {
-  max-width: 1440px;
-  margin: 0rem 0rem;
-  box-sizing: border-box;
+  background-image: url("../photo/deneme.png");
+  background-color: #c6dfdd;
+  background-blend-mode: luminosity, normal;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+}
+
+.column-container {
+  border: solid #c6dfdd 10px;
+  background-color: #c6dfdd;
+  border-radius: 1rem;
+  width: 80%;
+  height: 80%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.col-cont-out {
+  border: solid #ffffff;
+  background-color: #ffffff;
+  border-radius: 10px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.column-left {
+  border: solid red;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.4rem;
+  width: 20%;
+  height: 100%;
+}
+
+.column-left .header {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+}
+
+.column-left .header img {
+  width: 45%;
+}
+
+.column-left .navigation {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding: 0.5rem;
+}
+
+.column-left .navigation a {
+  text-decoration: none;
+  color: #000c5c;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.col-left-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.box-class {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border: solid;
+  border-color: #ffffff;
+  border-radius: 2rem;
+  background-color: rgba(246, 190, 49, 0.2);
+  gap: 16px;
+  padding: 0.9rem;
+}
+
+.box-class button {
+  background-color: #f8cb4e;
+  border-radius: 0.8rem;
+  width: 100%;
+  height: 80%;
+  color: #000c5c;
+  box-shadow: 0 0 30;
+  font-size: 10px;
+  font-weight: 900;
+  text-align: center;
+  letter-spacing: 0.1em;
+}
+
+.box-class img {
+  width: 100%;
+}
+
+.KVKK button {
+  font-size: 10px;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.column-right {
+  border: solid;
+  width: 100%;
+  height: 100%;
+}
+
+.nav-bar-text {
+  color: #000c5c;
 }

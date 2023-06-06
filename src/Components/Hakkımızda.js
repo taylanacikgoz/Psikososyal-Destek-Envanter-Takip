@@ -1,16 +1,13 @@
 import React from "react";
-import Aksiyonlar from "./Aksiyonlar";
 import Header from "./Header";
 import Navigation from "./Navigation";
 import "../Css/Hakkımızda.css";
 
-function Hakkımızda(props) {
-  const { data } = props;
+function Hakkımızda() {
   return (
     <div>
-      <Navigation />
       <div className="Hakkımızda">
-        <p className="Hakkımızda Yazı">{data.Hakkimizda}</p>
+        <p className="Hakkımızda Yazı">Buraya Hakkımızda</p>
       </div>
     </div>
   );

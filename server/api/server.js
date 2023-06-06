@@ -4,6 +4,8 @@ const envanterRoute = require("./Routes/EnvanterRoutes/envanter-router");
 const merkezRoute = require("./Routes/MerkezRoutes/merkez-router");
 const kurumRoute = require("./Routes/KurumRoutes/kurum-router");
 const hizmetRoute = require("./Routes/HizmetRoutes/hizmet-router");
+const authRoute = require("./Routes/authRouter/auth-router");
+const { sinirli, sadece } = require("../api/Routes/authRouter/auth-middleware");
 
 const express = require("express");
 const server = express();
@@ -30,6 +32,7 @@ server.use((err, req, res, next) => {
   });
 });
 
+server.use("/api/", authRoute);
 server.use("/api/", sehirRoute);
 server.use("/api/", personelRoute);
 server.use("/api/", envanterRoute);

@@ -22,11 +22,9 @@ router.get("/personel/:Personel_id", async (req, res, next) => {
 router.delete("/personel/:Personel_id", async (req, res, next) => {
   try {
     await dataModel.deleteById(req.params.Personel_id);
-    res
-      .status(201)
-      .json({
-        message: `${req.params.Personel_id} numaralı Personel silindi.`,
-      });
+    res.status(201).json({
+      message: `${req.params.Personel_id} numaralı Personel silindi.`,
+    });
   } catch (error) {
     next(error);
   }

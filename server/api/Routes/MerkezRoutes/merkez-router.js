@@ -4,7 +4,11 @@ const dataModel = require("./getData-model");
 router.get("/merkez", async (req, res, next) => {
   try {
     const Merkez = await dataModel.getAll();
-    res.status(201).json(Merkez);
+    if (Merkez.length > 0) {
+      res.status(201).json(Merkez);
+    } else {
+      res.status(404).json(null);
+    }
   } catch (error) {
     next(error);
   }
