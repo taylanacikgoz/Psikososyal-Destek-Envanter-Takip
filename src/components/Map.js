@@ -21,8 +21,8 @@ const Map = () => {
       <div className="main">
         <svg
           className="map-svg"
-          width="700"
-          height="420"
+          width="800"
+          height="520"
           viewBox="0 0 729 470"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"

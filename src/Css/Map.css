@@ -1,16 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
 
+.main {
+  padding: 2%;
+}
+
 .red {
   color: red;
 }
 
 .map-svg {
   position: center;
-  margin-top: 40px;
-  padding-top: 20px;
-  margin-left: 30px;
-  padding-bottom: 10px;
-  margin-right: 50px;
   z-index: 1;
 }
 

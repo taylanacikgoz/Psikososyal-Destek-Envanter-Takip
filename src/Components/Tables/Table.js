@@ -120,6 +120,10 @@ const MyTable = () => {
         rowKey="Merkez_id"
         columns={columns}
         dataSource={data}
+        scroll={{
+          x: 1100,
+          y: 300,
+        }}
         expandable={{
           expandedRowRender,
           defaultExpandedRowKeys: ["0"],

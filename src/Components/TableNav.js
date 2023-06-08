@@ -1,13 +1,11 @@
 import React from "react";
 import "../Css/TableNav.css";
-
 import Table from "./Tables/Table";
 import { useState } from "react";
 import { AsılPersonelTable } from "./Tables/PersonelTable";
 import { AsılEnvanterTable } from "./Tables/Envanter";
 import { AsılHizmetTable } from "./Tables/Hizmet";
 import { AsılKurumTable } from "./Tables/Kurum";
-import Navigation from "./Navigation";
 function TableNav() {
   const [showTable, setshowTable] = useState(false);
   const [showPersonelTable, setshowPersonelTable] = useState(false);

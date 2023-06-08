@@ -248,6 +248,10 @@ export const AsılKurumTable = ({ Merkez_id }) => {
         dataSource={kurum2}
         pagination={false}
         rowKey="Kurum_id"
+        scroll={{
+          x: 1000,
+          y: 300,
+        }}
       />
       {isModalVisible && (
         <PersonelForm

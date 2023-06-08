@@ -3,9 +3,6 @@
   flex-direction: row;
   justify-content: flex-start;
   gap: 1rem;
-  margin-top: 3rem;
-  margin-left: 1rem;
-  height: 40px;
 }
 
 button {
