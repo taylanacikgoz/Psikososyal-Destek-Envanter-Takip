@@ -414,6 +414,11 @@ export const AsılPersonelTable = () => {
           </div>
         )}
         columns={personelColumns}
+        size="middle"
+        scroll={{
+          x: 1400,
+          y: 300,
+        }}
         dataSource={personel2}
         pagination={false}
         rowKey="Personel_id"
